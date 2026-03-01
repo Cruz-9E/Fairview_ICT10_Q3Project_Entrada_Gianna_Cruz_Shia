@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Intramurals Players List</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: linear-gradient(to right, #bb2030, #005eac, #00984d, #f3bd19);
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #005eac;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .filter-section {
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        .filter-section p {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        select:hover {
+            border-color: #005eac;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #005eac;
+            box-shadow: 0 0 5px rgba(0, 94, 172, 0.3);
+        }
+
+        .class-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            background: linear-gradient(to right, #bb2030, #005eac, #00984d, #f3bd19);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 500px;
+            height: 45px;
+        }
+
+        .class-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .class-btn:active {
+            transform: scale(0.95);
+        }
+
+        .players-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .player-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .player-card p {
+            margin: 0;
+            color: #333;
+            font-weight: 500;
+            word-break: break-word;
+            font-size: 14px;
+        }
+
+        nav {
+            background: #fff;
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .logo {
+            float: left;
+            color: #333;
+            font-size: 16px;
+            padding: 0 13px;
+            line-height: 80px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav .logo:hover {
+            background: none;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: #333;
+            font-size: 16px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        a.active,
+        nav ul li a:hover {
+            background: #eee;
+            transition: .5s;
+            color: #333;
+        }
+
+        #check {
+            display: none;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: #333;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+            z-index: 101;
+        }
+
+        #check:checked~.checkbtn {
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .checkbtn {
+                display: block;
+                z-index: 101;
+            }
+
+            nav ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #fff;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+                z-index: 101;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            nav ul li a {
+                font-size: 20px;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+
+            .logo {
+                padding: 0 20px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .class-btn {
+                width: calc(100% - 20px);
+                max-width: 450px;
+            }
+
+            .players-list {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .filter-controls {
+                flex-direction: column;
+            }
+
+            select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <a href="index.html" class="logo">Intramurals SY 2025-2026</a>
+        <ul>
+            <li><a href="index.html">Sign Up</a></li>
+            <li><a href="team.html">Team Checker</a></li>
+            <li><a class="active" href="list.html">Players</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Intramurals Players</h1>
+        <div class="filter-section">
+            <button class="class-btn" py-click="show_players">View Players</button>
+        </div>
+        <div id="players-container"></div>
+    </div>
+    <py-script src="list.py"></py-script>
+</body>
+
+</html>

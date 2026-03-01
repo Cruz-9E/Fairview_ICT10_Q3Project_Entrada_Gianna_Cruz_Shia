@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Intramurals Account Creation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #bb2030, #005eac, #00984d, #f3bd19);
+            margin: 0;
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 650px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+        }
+
+        input.form-control {
+            text-align: center;
+            height: 45px;
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .pass-wrapper {
+            position: relative;
+            width: 500px;
+            margin: 0 auto 15px auto;
+        }
+
+        #togglePass {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #6c757d;
+            font-size: 18px;
+            z-index: 10;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        #togglePass:hover {
+            color: #005eac;
+        }
+
+        .btn-signup {
+            margin-top: 10px;
+            margin-bottom: 15px;
+            width: 500px;
+            background: linear-gradient(to right, #bb2030, #005eac, #00984d, #f3bd19);
+            border: none;
+            color: white;
+            font-weight: bold;
+            height: 45px;
+        }
+
+        #output {
+            margin: 0 auto;
+        }
+
+        nav {
+            background: #fff;
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            float: left;
+            color: #333;
+            font-size: 16px;
+            padding: 0 13px;
+            line-height: 80px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav .logo:hover {
+            background: none;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: #333;
+            font-size: 16px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        a.active,
+        nav ul li a:hover {
+            background: #eee;
+            transition: .5s;
+            color: #333;
+        }
+
+        #check {
+            display: none;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: #333;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+            z-index: 101;
+        }
+
+        #check:checked~.checkbtn {
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+            .checkbtn {
+                display: block;
+                z-index: 101;
+            }
+
+            nav ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #fff;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+                z-index: 101;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            nav ul li a {
+                font-size: 20px;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+
+            .logo {
+                padding: 0 20px;
+            }
+
+            input.form-control {
+                width: calc(100% - 20px);
+                max-width: 450px;
+            }
+
+            .pass-wrapper {
+                width: calc(100% - 20px);
+                max-width: 450px;
+            }
+
+            .btn-signup {
+                width: calc(100% - 20px);
+                max-width: 450px;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <a href="index.html" class="logo">Intramurals SY 2025-2026</a>
+        <ul>
+            <li><a class="active" href="index.html">Sign Up</a></li>
+            <li><a href="team.html">Team Checker</a></li>
+            <li><a href="list.html">Players</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Create Account</h1>
+        <form>
+            <div class="d-flex flex-column align-items-center">
+                <input type="text" class="form-control mb-3" id="user" placeholder="Username" />
+                <div class="pass-wrapper">
+                    <input type="password" class="form-control" id="pass" placeholder="Password" />
+                    <button type="button" id="togglePass" py-click="toggle_pass">
+                        <i id="eyeIcon" class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <button type="button" class="btn btn-primary btn-signup" py-click="create_account">Sign Up</button>
+        <div id="output"></div>
+    </div>
+    <py-script src="main.py"></py-script>
+</body>
+
+</html>
