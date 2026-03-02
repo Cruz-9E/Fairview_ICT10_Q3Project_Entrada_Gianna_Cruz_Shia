@@ -29,29 +29,36 @@
             max-width: 650px;
             padding: 40px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 10px auto 40px auto; 
+            margin-top: 10px;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        h1 { 
-            margin-bottom: 25px; 
+        h1 {
+            margin-bottom: 25px;
         }
 
         input.form-control {
             text-align: center;
             height: 45px;
-            width: 100%; 
+            width: 100%;
             max-width: 500px;
-            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .pass-wrapper {
             position: relative;
             width: 100%;
             max-width: 500px;
-            margin: 0 auto 15px auto;
+            margin-top: 0;
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #togglePass {
@@ -80,6 +87,7 @@
             color: white;
             font-weight: bold;
             height: 45px;
+            border-radius: 5px;
         }
 
         nav {
@@ -96,7 +104,8 @@
             float: left;
             color: #333;
             font-size: 16px;
-            padding: 0 13px;
+            padding-left: 13px;
+            padding-right: 13px;
             line-height: 80px;
             text-transform: uppercase;
             text-decoration: none;
@@ -110,25 +119,33 @@
         nav ul li {
             display: inline-block;
             line-height: 80px;
-            margin: 0 5px;
+            margin-left: 5px;
+            margin-right: 5px;
         }
 
         nav ul li a {
             color: #333;
             font-size: 16px;
-            padding: 7px 13px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 13px;
+            padding-right: 13px;
             border-radius: 3px;
             text-transform: uppercase;
             text-decoration: none;
         }
 
-        a.active, nav ul li a:hover {
+        a.active,
+        nav ul li a:hover {
             background: #eee;
             transition: .5s;
             color: #333;
         }
 
-        #check { display: none; }
+        #check {
+            display: none;
+        }
+
         .checkbtn {
             font-size: 30px;
             color: #333;
@@ -141,7 +158,10 @@
         }
 
         @media (max-width: 900px) {
-            .checkbtn { display: block; }
+            .checkbtn {
+                display: block;
+            }
+
             nav ul {
                 position: fixed;
                 width: 100%;
@@ -151,15 +171,35 @@
                 left: -100%;
                 text-align: center;
                 transition: all .5s;
+                z-index: 101;
             }
-            nav ul li { display: block; margin: 50px 0; }
-            #check:checked~ul { left: 0; }
+
+            nav ul li {
+                display: block;
+                margin-top: 50px;
+                margin-bottom: 50px;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: calc(100% - 40px);
+            }
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
     </style>
 </head>
@@ -177,7 +217,6 @@
             <li><a href="list.html">Players</a></li>
         </ul>
     </nav>
-
     <div class="text-center text-white pt-5 pb-2">
         <h1 class="fw-bold display-4">
             <i class="fa-solid fa-trophy me-2"></i>
@@ -186,7 +225,6 @@
         </h1>
         <p class="lead">Represent your team with pride!</p>
     </div>
-
     <div class="container">
         <h1>Create Account</h1>
         <form style="width: 100%; display: contents;">
@@ -203,10 +241,7 @@
         </form>
         <div id="output"></div>
     </div>
-
-    <footer class="text-center mt-5 text-white">
-        © Intramurals SY 2025-2026 | Made with ❤️
-    </footer>
+    <footer class="text-center mt-5 text-white">© Intramurals SY 2025-2026 | Made with ❤️</footer>
     <py-script src="main.py"></py-script>
 </body>
 
