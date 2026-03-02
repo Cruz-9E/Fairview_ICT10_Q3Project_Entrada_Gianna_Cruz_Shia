@@ -12,30 +12,27 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+        body {
+            background: linear-gradient(-45deg, #bb2030, #005eac, #00984d, #f3bd19);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            font-family: "Montserrat", sans-serif;
+            text-align: center;
+            margin: 0;
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+
         .container {
             max-width: 650px;
-            margin: 40px auto;
             background-color: white;
             border-radius: 10px;
             padding: 40px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-         body {
-             background: linear-gradient(-45deg, #bb2030, #005eac, #00984d, #f3bd19);
-             background-size: 400% 400%;
-             animation: gradientShift 15s ease infinite;
-             font-family: "Montserrat", sans-serif;
-             text-align: center;
-             margin: 0;
-             padding-top: 80px;
-             padding-bottom: 40px;
-         }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            margin-top: 20px;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         h1 {
@@ -45,7 +42,7 @@
 
         .form-section {
             margin-bottom: 10px;
-            padding: 0 0 10px 0;
+            padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
         }
 
@@ -57,6 +54,7 @@
             font-size: 16px;
             margin-bottom: 15px;
             color: #333;
+            font-weight: 600;
         }
 
         .radio-group {
@@ -77,19 +75,6 @@
             cursor: pointer;
             width: 18px;
             height: 18px;
-        }
-
-        input[type="radio"] + label {
-            margin: 0;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        p {
-            font-size: 16px;
-            margin: 5px 0;
-            font-weight: 600;
-            color: #333;
         }
 
         .select-group {
@@ -114,16 +99,11 @@
             border-color: #005eac;
         }
 
-        select:focus {
-            outline: none;
-            border-color: #005eac;
-            box-shadow: 0 0 5px rgba(0, 94, 172, 0.3);
-        }
-
         .btn-signup {
             margin-top: 10px;
             margin-bottom: 15px;
-            width: 500px;
+            width: 100%;
+            max-width: 500px;
             background: linear-gradient(to right, #bb2030, #005eac, #00984d, #f3bd19);
             border: none;
             color: white;
@@ -138,20 +118,24 @@
             transform: scale(1.02);
         }
 
-        .btn-signup:active {
-            transform: scale(0.98);
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
         }
 
         .team-logo {
-            width: 240px;
-            height: 240px;
-            max-width: 80%;
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
             object-fit: cover;
-            margin-top: 12px;
-            border-radius: 6px;
+            object-position: center;
+            margin-top: 20px;
             display: block;
             margin-left: auto;
             margin-right: auto;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
         }
 
         nav {
@@ -168,14 +152,11 @@
             float: left;
             color: #333;
             font-size: 16px;
-            padding: 0 13px;
+            padding-left: 13px;
+            padding-right: 13px;
             line-height: 80px;
             text-transform: uppercase;
             text-decoration: none;
-        }
-
-        nav .logo:hover {
-            background: none;
         }
 
         nav ul {
@@ -186,13 +167,17 @@
         nav ul li {
             display: inline-block;
             line-height: 80px;
-            margin: 0 5px;
+            margin-left: 5px;
+            margin-right: 5px;
         }
 
         nav ul li a {
             color: #333;
             font-size: 16px;
-            padding: 7px 13px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 13px;
+            padding-right: 13px;
             border-radius: 3px;
             text-transform: uppercase;
             text-decoration: none;
@@ -220,14 +205,9 @@
             z-index: 101;
         }
 
-        #check:checked~.checkbtn {
-            color: #fff;
-        }
-
         @media (max-width: 900px) {
             .checkbtn {
                 display: block;
-                z-index: 101;
             }
 
             nav ul {
@@ -244,20 +224,12 @@
 
             nav ul li {
                 display: block;
-                margin: 50px 0;
-                line-height: 30px;
-            }
-
-            nav ul li a {
-                font-size: 20px;
+                margin-top: 50px;
+                margin-bottom: 50px;
             }
 
             #check:checked~ul {
                 left: 0;
-            }
-
-            .logo {
-                padding: 0 20px;
             }
 
             .container {
@@ -265,28 +237,33 @@
                 max-width: calc(100% - 40px);
             }
 
-            .btn-signup {
-                width: calc(100% - 20px);
-                max-width: 450px;
-            }
-
-            .team-logo {
-                width: calc(100% - 40px);
-                max-width: 300px;
-            }
-
-            .radio-group {
+            .radio-group,
+            .select-group {
                 flex-direction: column;
                 gap: 15px;
             }
 
-            .select-group {
-                flex-direction: column;
-                gap: 10px;
-            }
-
             select {
                 width: 100%;
+            }
+
+            .team-logo {
+                max-width: 100%;
+                height: 200px;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
             }
         }
     </style>
@@ -305,60 +282,60 @@
             <li><a href="list.html">Players</a></li>
         </ul>
     </nav>
-
     <div class="container">
         <h1>Intramurals Team Checker</h1>
         <form>
-                    <div class="form-section">
-                        <p>Are you done with the online registration?</p>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="reg1" name="registration" value="yes">
-                                <label for="reg1">Yes</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="reg2" name="registration" value="no">
-                                <label for="reg2">No</label>
-                            </div>
-                        </div>
+            <div class="form-section">
+                <p>Are you done with the online registration?</p>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="reg1" name="registration" value="yes">
+                        <label for="reg1">Yes</label>
                     </div>
-                    <div class="form-section">
-                        <p>Do you have medical clearance from the clinic?</p>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="clear1" name="clearance" value="yes">
-                                <label for="clear1">Yes</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="clear2" name="clearance" value="no">
-                                <label for="clear2">No</label>
-                            </div>
-                        </div>
+                    <div class="radio-option">
+                        <input type="radio" id="reg2" name="registration" value="no">
+                        <label for="reg2">No</label>
                     </div>
-                    <div class="form-section">
-                        <p>What is your Grade & Section?</p>
-                        <div class="select-group">
-                            <select id="grade" name="grade">
-                                <option value="">Grade</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                            <select id="section" name="section">
-                                <option value="">Section</option>
-                                <option value="emerald">Emerald</option>
-                                <option value="ruby">Ruby</option>
-                                <option value="sapphire">Sapphire</option>
-                                <option value="topaz">Topaz</option>
-                                <option value="jade">Jade</option>
-                            </select>
-                        </div>
+                </div>
+            </div>
+            <div class="form-section">
+                <p>Do you have medical clearance from the clinic?</p>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="clear1" name="clearance" value="yes">
+                        <label for="clear1">Yes</label>
                     </div>
-                </form>
-                <button type="button" class="btn btn-primary btn-signup" py-click="sign_up">Sign Up</button>
-                <div style="font-weight: bold;" id="output"></div>
+                    <div class="radio-option">
+                        <input type="radio" id="clear2" name="clearance" value="no">
+                        <label for="clear2">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-section">
+                <p>What is your Grade & Section?</p>
+                <div class="select-group">
+                    <select id="grade" name="grade">
+                        <option value="">Grade</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <select id="section" name="section">
+                        <option value="">Section</option>
+                        <option value="emerald">Emerald</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="sapphire">Sapphire</option>
+                        <option value="topaz">Topaz</option>
+                        <option value="jade">Jade</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <button type="button" class="btn btn-primary btn-signup" py-click="sign_up">Check Team</button>
+        <div id="output"></div>
     </div>
+    <footer class="text-center mt-5 text-white">© Intramurals SY 2025-2026 | Made with ❤️</footer>
     <py-script src="team.py"></py-script>
 </body>
 
