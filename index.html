@@ -210,6 +210,24 @@
             }
         }
     </style>
+    <style>
+  body {
+    background: linear-gradient(-45deg, #bb2030, #005eac, #00984d, #f3bd19);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+</style>
 </head>
 
 <body>
@@ -225,6 +243,15 @@
             <li><a href="list.html">Players</a></li>
         </ul>
     </nav>
+    <div class="text-center text-white py-5">
+    <h1 class="fw-bold display-4">
+        <i class="fa-solid fa-trophy me-2"></i>
+        Intramurals 2025
+    </h1>
+    <p class="lead">
+    Represent your team with pride!
+    </p>
+</div>
     <div class="container">
         <h1>Create Account</h1>
         <form>
@@ -241,6 +268,9 @@
         <button type="button" class="btn btn-primary btn-signup" py-click="create_account">Sign Up</button>
         <div id="output"></div>
     </div>
+    <footer class="text-center mt-5 text-muted">
+  © 2025 Intramurals SY 2025-2026 | Made with ❤️
+</footer>
     <py-script src="main.py"></py-script>
 </body>
 
