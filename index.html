@@ -11,17 +11,17 @@
     <title>Intramurals Account Creation</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-    
-         body {
-             background: linear-gradient(-45deg, #bb2030, #005eac, #00984d, #f3bd19);
-             background-size: 400% 400%;
-             animation: gradientShift 15s ease infinite;
-             font-family: "Montserrat", sans-serif;
-             text-align: center;
-             margin: 0;
-             padding-top: 80px;
-             padding-bottom: 40px;
-         }
+
+        body {
+            background: linear-gradient(-45deg, #bb2030, #005eac, #00984d, #f3bd19);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            font-family: "Montserrat", sans-serif;
+            text-align: center;
+            margin: 0;
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
 
         .container {
             background-color: white;
@@ -29,23 +29,28 @@
             max-width: 650px;
             padding: 40px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 40px auto;
+            margin: 10px auto 40px auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        h1 {
-            margin-bottom: 25px;
+        h1 { 
+            margin-bottom: 25px; 
         }
 
         input.form-control {
             text-align: center;
             height: 45px;
-            width: 500px;
+            width: 100%; 
+            max-width: 500px;
             margin: 0 auto;
         }
 
         .pass-wrapper {
             position: relative;
-            width: 500px;
+            width: 100%;
+            max-width: 500px;
             margin: 0 auto 15px auto;
         }
 
@@ -63,26 +68,18 @@
             padding: 0;
             display: flex;
             align-items: center;
-            transition: color 0.2s;
-        }
-
-        #togglePass:hover {
-            color: #005eac;
         }
 
         .btn-signup {
             margin-top: 10px;
             margin-bottom: 15px;
-            width: 500px;
+            width: 100%;
+            max-width: 500px;
             background: linear-gradient(to right, #bb2030, #005eac, #00984d, #f3bd19);
             border: none;
             color: white;
             font-weight: bold;
             height: 45px;
-        }
-
-        #output {
-            margin: 0 auto;
         }
 
         nav {
@@ -105,10 +102,6 @@
             text-decoration: none;
         }
 
-        nav .logo:hover {
-            background: none;
-        }
-
         nav ul {
             float: right;
             margin-right: 20px;
@@ -129,17 +122,13 @@
             text-decoration: none;
         }
 
-        a.active,
-        nav ul li a:hover {
+        a.active, nav ul li a:hover {
             background: #eee;
             transition: .5s;
             color: #333;
         }
 
-        #check {
-            display: none;
-        }
-
+        #check { display: none; }
         .checkbtn {
             font-size: 30px;
             color: #333;
@@ -151,16 +140,8 @@
             z-index: 101;
         }
 
-        #check:checked~.checkbtn {
-            color: #fff;
-        }
-
         @media (max-width: 900px) {
-            .checkbtn {
-                display: block;
-                z-index: 101;
-            }
-
+            .checkbtn { display: block; }
             nav ul {
                 position: fixed;
                 width: 100%;
@@ -170,56 +151,17 @@
                 left: -100%;
                 text-align: center;
                 transition: all .5s;
-                z-index: 101;
             }
-
-            nav ul li {
-                display: block;
-                margin: 50px 0;
-                line-height: 30px;
-            }
-
-            nav ul li a {
-                font-size: 20px;
-            }
-
-            #check:checked~ul {
-                left: 0;
-            }
-
-            .logo {
-                padding: 0 20px;
-            }
-
-            input.form-control {
-                width: calc(100% - 20px);
-                max-width: 450px;
-            }
-
-            .pass-wrapper {
-                width: calc(100% - 20px);
-                max-width: 450px;
-            }
-
-            .btn-signup {
-                width: calc(100% - 20px);
-                max-width: 450px;
-            }
-
-            .container {
-                padding: 20px;
-                max-width: calc(100% - 40px);
-            }
+            nav ul li { display: block; margin: 50px 0; }
+            #check:checked~ul { left: 0; }
         }
+
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        footer {
-            color: white
-        }
-</style>
+    </style>
 </head>
 
 <body>
@@ -235,20 +177,20 @@
             <li><a href="list.html">Players</a></li>
         </ul>
     </nav>
-    <div class="text-center text-white py-5">
-    <h1 class="fw-bold display-4">
-        <i class="fa-solid fa-trophy me-2"></i>
-        Intramurals SY 2526
-        <i class="fa-solid fa-trophy me-2"></i>
-    </h1>
-    <p class="lead">
-    Represent your team with pride!
-    </p>
-</div>
+
+    <div class="text-center text-white pt-5 pb-2">
+        <h1 class="fw-bold display-4">
+            <i class="fa-solid fa-trophy me-2"></i>
+            Intramurals SY 2526
+            <i class="fa-solid fa-trophy me-2"></i>
+        </h1>
+        <p class="lead">Represent your team with pride!</p>
+    </div>
+
     <div class="container">
         <h1>Create Account</h1>
-        <form>
-            <div class="d-flex flex-column align-items-center">
+        <form style="width: 100%; display: contents;">
+            <div class="d-flex flex-column align-items-center w-100">
                 <input type="text" class="form-control mb-3" id="user" placeholder="Username" />
                 <div class="pass-wrapper">
                     <input type="password" class="form-control" id="pass" placeholder="Password" />
@@ -256,14 +198,15 @@
                         <i id="eyeIcon" class="fa-solid fa-eye"></i>
                     </button>
                 </div>
+                <button type="button" class="btn btn-primary btn-signup" py-click="create_account">Sign Up</button>
             </div>
         </form>
-        <button type="button" class="btn btn-primary btn-signup" py-click="create_account">Sign Up</button>
         <div id="output"></div>
     </div>
+
     <footer class="text-center mt-5 text-white">
-  © 2025 Intramurals SY 2025-2026 | Made with ❤️
-</footer>
+        © Intramurals SY 2025-2026 | Made with ❤️
+    </footer>
     <py-script src="main.py"></py-script>
 </body>
 
