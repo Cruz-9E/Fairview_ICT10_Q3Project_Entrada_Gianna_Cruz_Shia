@@ -12,12 +12,23 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-        body {
-            font-family: "Montserrat", sans-serif;
-            background: linear-gradient(to right, #bb2030, #005eac, #00984d, #f3bd19);
-            padding-top: 80px;
-            padding-bottom: 40px;
+         body {
+             background: linear-gradient(-45deg, #bb2030, #005eac, #00984d, #f3bd19);
+             background-size: 400% 400%;
+             animation: gradientShift 15s ease infinite;
+             font-family: "Montserrat", sans-serif;
+             text-align: center;
+             margin: 0;
+             padding-top: 80px;
+             padding-bottom: 40px;
+         }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
+
 
         .container {
             max-width: 650px;
